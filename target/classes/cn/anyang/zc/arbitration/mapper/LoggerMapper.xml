@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.anyang.zc.arbitration.mapper.LoggerMapper">
+
+	<cache/>
+
+	<sql id="logging_event">event_id,time,level_string,formatted_message</sql>
+
+	<select id="count" parameterType="cn.anyang.zc.arbitration.model.PageModel" resultType="java.lang.Integer">
+		select count(*) from logging_event where 1=1
+		<if test="keyword != null">
+			and event_id like '${keyword}'
+			or CONVERT(varchar,time,121) like '${keyword}'
+			or level_string like '${keyword}'
+			or formatted_message like '${keyword}'
+		</if>
+	</select>
+
+	<select id="search" parameterType="cn.anyang.zc.arbitration.model.PageModel" resultType="Logger">
+		select top ${numPerPage} <include refid="logging_event"/> from logging_event
+		where event_id not in (select top ((${pageNum}-1)*${numPerPage}) event_id from logging_event
+			<if test="orderField != null">
+				order by ${orderField} ${orderDirection}
+			</if>)
+		<if test="keyword != null">
+			and event_id like '${keyword}'
+			or CONVERT(varchar,time,121) like '${keyword}'
+			or level_string like '${keyword}'
+			or formatted_message like '${keyword}'
+		</if>
+		<if test="orderField != null">
+			order by ${orderField} ${orderDirection}
+		</if>
+	</select>
+
+</mapper>

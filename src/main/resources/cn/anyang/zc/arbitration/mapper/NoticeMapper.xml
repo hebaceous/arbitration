@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.anyang.zc.arbitration.mapper.NoticeMapper">
+
+	<cache/>
+
+	<sql id="notice">id,cause,applicant,respondent,deliveredDate,courtDate,secretary,auditor</sql>
+
+	<insert id="insert" parameterType="Notice">
+		insert into notice(<include refid="notice"/>) values(#{id},#{cause},#{applicant},#{respondent},#{deliveredDate},#{courtDate},#{secretary},#{auditor})
+	</insert>
+
+	<select id="get" parameterType="java.lang.String" resultType="Notice">
+		select <include refid="notice"/> from notice where id = #{id}
+	</select>
+
+	<delete id="delete" parameterType="java.lang.String">
+		delete from notice where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="Notice">
+		update notice
+		<set>
+			<if test="cause != null">cause = #{cause},</if>
+			<if test="applicant != null">applicant = #{applicant},</if>
+			<if test="respondent != null">respondent = #{respondent},</if>
+			<if test="deliveredDate != null">deliveredDate = #{deliveredDate},</if>
+			<if test="courtDate != null">courtDate = #{courtDate},</if>
+			<if test="secretary != null">secretary = #{secretary},</if>
+			<if test="auditor != null">auditor = #{auditor}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<select id="getApprovaledNoticeByName" parameterType="java.lang.String" resultType="Notice">
+		select <include refid="notice"/> from notice
+		where secretary = #{secretary}
+		and id in (select id from cases where status > 4)
+	</select>
+
+	<select id="count" parameterType="cn.anyang.zc.arbitration.model.PageModel" resultType="java.lang.Integer">
+		select count(*) from notice  where 1=1
+		<if test="keyword != null">
+			and (id like '${keyword}'
+			or cause like '${keyword}'
+			or applicant like '${keyword}'
+			or respondent like '${keyword}'
+			or CONVERT(varchar,deliveredDate,120) like '${keyword}'
+			or CONVERT(varchar,courtDate,120) like '${keyword}'
+			or secretary like '${keyword}'
+			or auditor like '${keyword}')
+		</if>
+	</select>
+
+	<select id="search" parameterType="cn.anyang.zc.arbitration.model.PageModel" resultType="Notice">
+		select top ${numPerPage} <include refid="notice"/> from notice
+		where id not in (select top ((${pageNum}-1)*${numPerPage}) id from notice
+			<if test="orderField != null">
+				order by ${orderField} ${orderDirection}
+			</if>)
+		<if test="keyword != null">
+			and (id like '${keyword}'
+			or cause like '${keyword}'
+			or applicant like '${keyword}'
+			or respondent like '${keyword}'
+			or CONVERT(varchar,deliveredDate,120) like '${keyword}'
+			or CONVERT(varchar,courtDate,120) like '${keyword}'
+			or secretary like '${keyword}'
+			or auditor like '${keyword}')
+		</if>
+		<if test="orderField != null">
+			order by ${orderField} ${orderDirection}
+		</if>
+	</select>
+
+</mapper>

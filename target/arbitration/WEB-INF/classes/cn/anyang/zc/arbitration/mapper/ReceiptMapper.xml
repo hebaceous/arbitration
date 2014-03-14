@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.anyang.zc.arbitration.mapper.ReceiptMapper">
+
+	<cache/>
+
+	<sql id="receipt">id,cause,addressee,address,mode,files,contents,piece,deliveredDate,reason,secretary,processServer,description,receiver,receiptDate,isReceive,status</sql>
+	<!-- 没有receiptDate(收到日期) -->
+	<sql id="insertReceipt">id,cause,addressee,address,mode,files,contents,piece,deliveredDate,reason,secretary,processServer,description,receiver,isReceive,status</sql>
+
+	<insert id="insert" parameterType="Receipt">
+		insert into receipt(<include refid="insertReceipt"/>) values(#{id},#{cause},#{addressee},#{address},#{mode},#{files},#{contents},#{piece},#{deliveredDate},#{reason},#{secretary},#{processServer},#{description},#{receiver},#{isReceive},#{status})
+	</insert>
+
+	<select id="getReceiptedByName" parameterType="java.lang.String" resultType="Receipt">
+		select <include refid="receipt"/> from receipt
+		where secretary = #{secretary}
+	</select>
+
+	<!-- 根据case.id-次数 -->
+	<select id="getByCidAndTimes" parameterType="java.lang.String" resultType="Receipt">
+		select <include refid="receipt"/> from receipt
+		where id like ${idkey}
+	</select>
+
+	<!-- 根据case.id-次数和status -->
+	<select id="getByCidAndTimesAndStatus" parameterType="java.util.Map" resultType="Receipt">
+		select <include refid="receipt"/> from receipt
+		where id like ${idkey} and status = #{status}
+	</select>
+
+	<select id="getByStatus" parameterType="java.lang.Integer" resultType="Receipt">
+		select <include refid="receipt"/> from receipt
+		where status = #{status}
+	</select>
+
+	<select id="get" parameterType="java.lang.String" resultType="Receipt">
+		select <include refid="receipt"/> from receipt where id = #{id}
+	</select>
+
+	<update id="update" parameterType="Receipt">
+		update receipt
+		<set>
+			<if test="cause != null">cause = #{cause},</if>
+			<if test="addressee != null">addressee = #{addressee},</if>
+			<if test="address != null">address = #{address},</if>
+			<if test="mode != null">mode = #{mode},</if>
+			<if test="files != null">files = #{files},</if>
+			<if test="contents != null">contents = #{contents},</if>
+			<if test="piece != null">piece = #{piece},</if>
+			<if test="deliveredDate != null">deliveredDate = #{deliveredDate},</if>
+			<if test="reason != null">reason = #{reason},</if>
+			<if test="secretary != null">secretary = #{secretary},</if>
+			<if test="processServer != null">processServer = #{processServer},</if>
+			<if test="description != null">description = #{description},</if>
+			<if test="receiver != null">receiver = #{receiver},</if>
+			<if test="receiptDate != null">receiptDate = #{receiptDate},</if>
+			<if test="isReceive != null">isReceive = #{isReceive},</if>
+			<if test="status != null">status = #{status}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<select id="count" parameterType="cn.anyang.zc.arbitration.model.PageModel" resultType="java.lang.Integer">
+		select count(*) from receipt where 1=1
+		<if test="keyword != null">
+			and (id like '${keyword}'
+			or cause like '${keyword}'
+			or addressee like '${keyword}'
+			or address like '${keyword}'
+			or mode like '${keyword}'
+			or files like '${keyword}'
+			or contents like '${keyword}'
+			or piece like '${keyword}'
+			or CONVERT(varchar,deliveredDate,120) like '${keyword}'
+			or reason like '${keyword}'
+			or secretary like '${keyword}'
+			or processServer like '${keyword}'
+			or description like '${keyword}'
+			or receiver like '${keyword}')
+			or CONVERT(varchar,receiptDate,120) like '${keyword}')
+		</if>
+	</select>
+
+	<select id="search" parameterType="cn.anyang.zc.arbitration.model.PageModel" resultType="Receipt">
+		select top ${numPerPage} <include refid="receipt"/> from receipt
+		where id not in (select top ((${pageNum}-1)*${numPerPage}) id from receipt
+			<if test="orderField != null">
+				order by ${orderField} ${orderDirection}
+			</if>)
+		<if test="keyword != null">
+			and (id like '${keyword}'
+			or cause like '${keyword}'
+			or addressee like '${keyword}'
+			or address like '${keyword}'
+			or mode like '${keyword}'
+			or files like '${keyword}'
+			or contents like '${keyword}'
+			or piece like '${keyword}'
+			or CONVERT(varchar,deliveredDate,120) like '${keyword}'
+			or reason like '${keyword}'
+			or secretary like '${keyword}'
+			or processServer like '${keyword}'
+			or description like '${keyword}'
+			or receiver like '${keyword}')
+			or CONVERT(varchar,receiptDate,120) like '${keyword}')
+		</if>
+		<if test="orderField != null">
+			order by ${orderField} ${orderDirection}
+		</if>
+	</select>
+
+</mapper>
