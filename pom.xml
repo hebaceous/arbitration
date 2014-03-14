@@ -6,7 +6,7 @@
 	<packaging>war</packaging>
 	<version>1.0</version>
 	<name>arbitration</name>
-	<url>http://222.139.5.117:8067/arbitration/</url>
+	<url>http://222.139.5.117/</url>
 
 	<properties>
 		<junit.version>4.11</junit.version>
