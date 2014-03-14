@@ -107,7 +107,7 @@
 		where id = #{id}
 	</update>
 
-	<select id="getCaseByStatus" parameterType="java.lang.String" resultMap="caseResult">
+	<select id="getCaseByStatus" parameterType="java.lang.Integer" resultMap="caseResult">
 		select <include refid="all"/>
 		where status = #{status}
 		order by date desc

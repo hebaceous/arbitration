@@ -50,11 +50,18 @@ public class StatisticsServiceImpl implements StatisticsService {
 				datas.append(count + ",");
 			}
 		}
+		String legend = null;
+		String data = null;
 		/**
 		 * 去掉最后一个 ","
 		 */
-		String legend = legends.substring(0, legends.lastIndexOf(","));
-		String data = datas.substring(0, datas.lastIndexOf(","));
+		if(legends.length() > 0){
+			legend = legends.substring(0, legends.lastIndexOf(","));
+			data = datas.substring(0, datas.lastIndexOf(","));
+		} else {
+			title = "没有案件";
+		}
+
 		return new String[] { legend, data, title };
 	}
 
@@ -79,8 +86,17 @@ public class StatisticsServiceImpl implements StatisticsService {
 				datas.append(count + ",");
 			}
 		}
-		String legend = legends.substring(0, legends.lastIndexOf(","));
-		String data = datas.substring(0, datas.lastIndexOf(","));
+		String legend = null;
+		String data = null;
+		/**
+		 * 去掉最后一个 ","
+		 */
+		if(legends.length() > 0){
+			legend = legends.substring(0, legends.lastIndexOf(","));
+			data = datas.substring(0, datas.lastIndexOf(","));
+		} else {
+			title = "没有案件";
+		}
 		return new String[] { legend, data, title };
 	}
 
@@ -106,8 +122,17 @@ public class StatisticsServiceImpl implements StatisticsService {
 				datas.append(count + ",");
 			}
 		}
-		String legend = legends.substring(0, legends.lastIndexOf(","));
-		String data = datas.substring(0, datas.lastIndexOf(","));
+		String legend = null;
+		String data = null;
+		/**
+		 * 去掉最后一个 ","
+		 */
+		if(legends.length() > 0){
+			legend = legends.substring(0, legends.lastIndexOf(","));
+			data = datas.substring(0, datas.lastIndexOf(","));
+		} else {
+			title = "没有案件";
+		}
 		return new String[] { legend, data, title };
 	}
 
