@@ -179,7 +179,10 @@ public class FlowController {
 		String isRelief = request.getParameter("isRelief");
 		Case c = new Case();
 		try {
-			c.setDate(new SimpleDateFormat("yyyy-MM-dd").parse(date));
+			// 设置立案日期和申请日期相同
+			Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+			c.setDate(date2);
+			c.setRegisterDate(date2);
 			// 2013-1
 			c.setId(new SimpleDateFormat("yyyy").format(c.getDate()) + "-" + id);
 			c.setAgreement(agreement);
@@ -249,7 +252,7 @@ public class FlowController {
 				/**
 				 * 中心主任审批通过，立马设置立案时间
 				 */
-				c.setRegisterDate(new Date());
+//				c.setRegisterDate(new Date());
 			}
 			c.setStatus(status+1);
 		} else {

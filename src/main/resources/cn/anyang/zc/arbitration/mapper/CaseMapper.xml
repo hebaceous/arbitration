@@ -53,12 +53,12 @@
 		cases(id,cause,agreement,request,caseOfficer,responsiblePersonOpinion,
 			departmentOpinion,secretaryGeneralOpinion,money,acceptCharges,
 			handlingCharges,arbitrationCharges,paidCharges,debtCharges,
-			isRelief,date,
+			isRelief,date,registerDate,
 			applicableProcedure,type,typeName,uid,status,hearingRecord)
 		values(#{id},#{cause},#{agreement},#{request},#{caseOfficer},#{responsiblePersonOpinion},
 			#{departmentOpinion},#{secretaryGeneralOpinion},#{money},#{acceptCharges},
 			#{handlingCharges},#{arbitrationCharges},#{paidCharges},#{debtCharges},
-			#{isRelief},#{date},
+			#{isRelief},#{date},#{registerDate},
 			#{applicableProcedure},#{type},#{typeName},#{user.id},#{status},#{hearingRecord});
 	</insert>
 
