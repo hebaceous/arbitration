@@ -31,7 +31,7 @@
 			</c:if>
 			<c:forEach var="detail" items="${arbitratorDetails }">
 			<tr>
-				<td>${fn:split(detail.id,"-")[0] }安仲裁字${fn:split(detail.id,"-")[1] }号</td>
+				<td>${fn:split(detail.id,"-")[0] }安仲案字${fn:split(detail.id,"-")[1] }号</td>
 				<td>${detail.name }</td>
 				<td>${detail.post }</td>
 				<td>${detail.accruedCharges }</td>

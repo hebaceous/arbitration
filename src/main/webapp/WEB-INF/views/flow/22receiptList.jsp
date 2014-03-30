@@ -30,7 +30,7 @@
 			</c:if>
 			<c:forEach var="receipt" items="${receipts }">
 			<tr>
-				<td>${fn:split(receipt.id,"-")[0] }安仲裁字${fn:split(receipt.id,"-")[1] }号</td>
+				<td>${fn:split(receipt.id,"-")[0] }安仲案字${fn:split(receipt.id,"-")[1] }号</td>
 				<td>${receipt.addressee }</td>
 				<td>${receipt.address }</td>
 				<td>${receipt.mode }</td>

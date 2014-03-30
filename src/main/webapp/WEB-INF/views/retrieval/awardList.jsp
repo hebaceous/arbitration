@@ -51,7 +51,7 @@
 		<tbody>
 			<c:forEach var="award" items="${model.list }">
 			<tr>
-				<td><a title="裁决书详情" target="navTab" rel="printaward" href="${pageContext.request.contextPath }/award/${award.id }">${fn:split(award.id,"-")[0] }安仲裁字${fn:split(award.id,"-")[1] }号</a></td>
+				<td><a title="裁决书详情" target="navTab" rel="printaward" href="${pageContext.request.contextPath }/award/${award.id }">${fn:split(award.id,"-")[0] }安仲案字${fn:split(award.id,"-")[1] }号</a></td>
 				<td>${award.cause }</td>
 				<td>${award.applicant }</td>
 				<td>${award.respondent }</td>

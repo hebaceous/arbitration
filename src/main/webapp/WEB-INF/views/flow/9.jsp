@@ -15,7 +15,7 @@
 		<tr class="title"><td colspan="5">仲裁员选定、指定审批表</td></tr>
 		<tr class="number">
 			<td colspan="4">
-				案号：${fn:split(c.id,"-")[0] }安仲裁字${fn:split(c.id,"-")[1] }号
+				案号：${fn:split(c.id,"-")[0] }安仲案字${fn:split(c.id,"-")[1] }号
 				程序：<c:forEach var="procedure" items="${caseProcedures }">
 						<c:if test="${procedure == caseProcedures[c.applicableProcedure] }">${procedure }</c:if>
 					</c:forEach>&nbsp;&nbsp;&nbsp;&nbsp;

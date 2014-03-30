@@ -50,7 +50,7 @@
 		<tbody>
 			<c:forEach var="arbitrator" items="${model.list }">
 			<tr>
-				<td><a target="navTab" title='${fn:split(arbitrator.id,"-")[0] }安仲裁字${fn:split(arbitrator.id,"-")[1] }号' href="${pageContext.request.contextPath }/arbitrator/${arbitrator.id }">${fn:split(arbitrator.id,"-")[0] }安仲裁字${fn:split(arbitrator.id,"-")[1] }号</a></td>
+				<td><a target="navTab" title='${fn:split(arbitrator.id,"-")[0] }安仲案字${fn:split(arbitrator.id,"-")[1] }号' href="${pageContext.request.contextPath }/arbitrator/${arbitrator.id }">${fn:split(arbitrator.id,"-")[0] }安仲案字${fn:split(arbitrator.id,"-")[1] }号</a></td>
 				<td>${arbitrator.type }</td>
 				<td>${arbitrator.secretary }</td>
 				<td><fmt:formatDate value="${arbitrator.date }" type="date"/></td>

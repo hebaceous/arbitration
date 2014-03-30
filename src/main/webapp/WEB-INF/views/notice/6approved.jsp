@@ -21,7 +21,7 @@
 		<tbody>
 			<c:forEach var="notice" items="${notices }">
 			<tr>
-				<td><a title="公告详情" target="navTab" rel="printNotice" href="${pageContext.request.contextPath }/notice/${notice.id }">${fn:split(notice.id,"-")[0] }安仲裁字${fn:split(notice.id,"-")[1] }号</a></td>
+				<td><a title="公告详情" target="navTab" rel="printNotice" href="${pageContext.request.contextPath }/notice/${notice.id }">${fn:split(notice.id,"-")[0] }安仲案字${fn:split(notice.id,"-")[1] }号</a></td>
 				<td>${notice.cause }</td>
 				<td>${notice.applicant }</td>
 				<td>${notice.respondent }</td>

@@ -47,18 +47,12 @@
 	<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
 		<connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
 			<dataSource class="com.alibaba.druid.pool.DruidDataSource">
-				<!-- <driverClassName>net.sourceforge.jtds.jdbc.Driver</driverClassName> -->
+				<driverClassName>net.sourceforge.jtds.jdbc.Driver</driverClassName>
 				<url>jdbc:jtds:sqlserver://localhost:1433/arbitration</url>
 				<username>sa</username>
 				<password>111</password>
 			</dataSource>
 		</connectionSource>
-		<!-- <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
-			<driverClass>net.sourceforge.jtds.jdbc.Driver</driverClass>
-			<url>jdbc:jtds:sqlserver://localhost:1433/arbitration</url>
-			<user>sa</user>
-			<password>111</password>
-		</connectionSource> -->
 	</appender>
 
 	<logger name="org.springframework" level="WARN" />

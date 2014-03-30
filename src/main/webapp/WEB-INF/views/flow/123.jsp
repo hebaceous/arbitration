@@ -20,7 +20,7 @@ $(function() {
 		<div class="pageFormContent" layoutH="56">
 			<p>
 				<label>案件号：</label>
-				${fn:split(c.id,"-")[0] }安仲裁字${fn:split(c.id,"-")[1] }号
+				${fn:split(c.id,"-")[0] }安仲案字${fn:split(c.id,"-")[1] }号
 			</p>
 			<p>
 				<label>案由：</label>

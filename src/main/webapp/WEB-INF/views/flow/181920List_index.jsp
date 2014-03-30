@@ -29,7 +29,7 @@
 			</c:if>
 			<c:forEach var="c" items="${cases }">
 			<tr mark_remove="${c.id }">
-				<td><a target="navTab" title='${fn:split(c.id,"-")[0] }安仲裁字${fn:split(c.id,"-")[1] }号' href="${pageContext.request.contextPath }/case/${c.id }">${fn:split(c.id,"-")[0] }安仲裁字${fn:split(c.id,"-")[1] }号</a></td>
+				<td><a target="navTab" title='${fn:split(c.id,"-")[0] }安仲案字${fn:split(c.id,"-")[1] }号' href="${pageContext.request.contextPath }/case/${c.id }">${fn:split(c.id,"-")[0] }安仲案字${fn:split(c.id,"-")[1] }号</a></td>
 				<td><a target="dialog" mask="true" width=900 height="400" title="详细信息" href="${pageContext.request.contextPath }/applicant/${c.id }/true">查看详情</a></td>
 				<td><a target="dialog" mask="true" width="900" height="400" title="详细信息" href="${pageContext.request.contextPath }/applicant/${c.id }/false">查看详情</a></td>
 				<td>${c.cause }</td>

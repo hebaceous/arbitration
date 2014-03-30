@@ -26,7 +26,7 @@ $(function() {
 		<tr class="title"><td colspan="2">安阳仲裁委员会公告签发单</td></tr>
 		<tr>
 			<td class="td1">案号：</td>
-			<td>${fn:split(notice.id,"-")[0] }安仲裁字${fn:split(notice.id,"-")[1] }号</td>
+			<td>${fn:split(notice.id,"-")[0] }安仲案字${fn:split(notice.id,"-")[1] }号</td>
 		</tr>
 		<tr>
 			<td>案由：</td>

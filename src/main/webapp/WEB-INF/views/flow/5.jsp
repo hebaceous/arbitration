@@ -28,7 +28,7 @@ $(function() {
 			<td>案由</td>
 			<td>${c.cause }</td>
 			<td>案号</td>
-			<td>${fn:split(c.id,"-")[0] }安仲裁字${fn:split(c.id,"-")[1] }号</td>
+			<td>${fn:split(c.id,"-")[0] }安仲案字${fn:split(c.id,"-")[1] }号</td>
 		</tr>
 		<tr>
 			<td>受送达人</td>

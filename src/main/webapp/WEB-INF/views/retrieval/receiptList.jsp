@@ -52,7 +52,7 @@
 		<tbody>
 			<c:forEach var="receipt" items="${model.list }">
 			<tr>
-				<td><a title="回证详情" target="navTab" rel="printReceipt" href="${pageContext.request.contextPath }/receipt/${receipt.id }">${fn:split(receipt.id,"-")[0] }安仲裁字${fn:split(receipt.id,"-")[1] }号—<c:if test="${fn:split(receipt.id,'-')[2] == 1 }">受理案件后</c:if><c:if test="${fn:split(receipt.id,'-')[2] == 2 }">组庭后</c:if><c:if test="${fn:split(receipt.id,'-')[2] == 3 }">下达裁决书后</c:if>—${receipt.addressee }</a></td>
+				<td><a title="回证详情" target="navTab" rel="printReceipt" href="${pageContext.request.contextPath }/receipt/${receipt.id }">${fn:split(receipt.id,"-")[0] }安仲案字${fn:split(receipt.id,"-")[1] }号—<c:if test="${fn:split(receipt.id,'-')[2] == 1 }">受理案件后</c:if><c:if test="${fn:split(receipt.id,'-')[2] == 2 }">组庭后</c:if><c:if test="${fn:split(receipt.id,'-')[2] == 3 }">下达裁决书后</c:if>—${receipt.addressee }</a></td>
 				<td>${receipt.cause }</td>
 				<td>${receipt.addressee }</td>
 				<td>${receipt.address }</td>

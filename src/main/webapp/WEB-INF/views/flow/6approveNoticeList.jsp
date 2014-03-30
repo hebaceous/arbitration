@@ -29,7 +29,7 @@
 			</c:if>
 			<c:forEach var="notice" items="${notices }">
 			<tr>
-				<td>${fn:split(notice.id,"-")[0] }安仲裁字${fn:split(notice.id,"-")[1] }号</td>
+				<td>${fn:split(notice.id,"-")[0] }安仲案字${fn:split(notice.id,"-")[1] }号</td>
 				<td>${notice.cause }</td>
 				<td>${notice.applicant }</td>
 				<td>${notice.respondent }</td>

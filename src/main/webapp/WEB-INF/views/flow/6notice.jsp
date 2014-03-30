@@ -7,7 +7,7 @@
 		<div class="pageFormContent" layoutH="56">
 			<p>
 				<label>案号：</label>
-				${fn:split(receipt.id,"-")[0] }安仲裁字${fn:split(receipt.id,"-")[1] }号
+				${fn:split(receipt.id,"-")[0] }安仲案字${fn:split(receipt.id,"-")[1] }号
 			</p>
 			<p>
 				<label>受送达人：</label> ${receipt.addressee }

@@ -24,7 +24,7 @@
 			</c:if>
 			<c:forEach var="award" items="${awards }" varStatus="status">
 			<tr>
-				<td>${fn:split(award.id,"-")[0] }安仲裁字${fn:split(award.id,"-")[1] }号</td>
+				<td>${fn:split(award.id,"-")[0] }安仲案字${fn:split(award.id,"-")[1] }号</td>
 				<td>${award.cause }</td>
 				<td>
 					<c:forEach var="type" items="${ awardTypes}">

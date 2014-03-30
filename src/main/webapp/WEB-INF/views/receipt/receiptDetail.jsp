@@ -24,7 +24,7 @@
 			<td>案由</td>
 			<td>${receipt.cause }</td>
 			<td>案号</td>
-			<td>${fn:split(receipt.id,"-")[0] }安仲裁字${fn:split(receipt.id,"-")[1] }号</td>
+			<td>${fn:split(receipt.id,"-")[0] }安仲案字${fn:split(receipt.id,"-")[1] }号</td>
 		</tr>
 		<tr>
 			<td>受送达人</td>

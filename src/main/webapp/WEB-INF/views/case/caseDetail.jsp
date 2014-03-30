@@ -204,7 +204,7 @@
 			<legend>案件信息</legend>
 			<dl>
 				<dt>案件号：</dt>
-				<dd>${fn:split(c.id,"-")[0] }安仲裁字${fn:split(c.id,"-")[1] }号</dd>
+				<dd>${fn:split(c.id,"-")[0] }安仲案字${fn:split(c.id,"-")[1] }号</dd>
 			</dl>
 			<dl>
 				<dt>仲裁协议：</dt>

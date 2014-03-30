@@ -26,7 +26,7 @@
 			</c:if>
 			<c:forEach var="c" items="${cases }">
 			<tr mark_update="${c.id }" status="${c.status }">
-				<td><a target="navTab" title='${fn:split(c.id,"-")[0] }安仲裁字${fn:split(c.id,"-")[1] }号' href="${pageContext.request.contextPath }/case/${c.id }">${fn:split(c.id,"-")[0] }安仲裁字${fn:split(c.id,"-")[1] }号</a></td>
+				<td><a target="navTab" title='${fn:split(c.id,"-")[0] }安仲案字${fn:split(c.id,"-")[1] }号' href="${pageContext.request.contextPath }/case/${c.id }">${fn:split(c.id,"-")[0] }安仲案字${fn:split(c.id,"-")[1] }号</a></td>
 				<td>${c.cause }</td>
 				<td><c:if test="${c.status <= 4 }">未指定</c:if><c:if test="${c.status > 4 }">${c.user.name }</c:if></td>
 				<td>
