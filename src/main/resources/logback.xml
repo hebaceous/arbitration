@@ -36,7 +36,7 @@
 		<smtpHost>smtp.qq.com</smtpHost>
 		<to>1012230405@qq.com</to>
 		<from>63527282@qq.com</from>
-		<subject>Arbitration: %logger{20} - %m</subject>
+		<subject>arbitration: %logger{20} - %m</subject>
 		<username>63527282@qq.com</username>
 		<password>syl18790853582</password>
 		<layout class="ch.qos.logback.classic.html.HTMLLayout">
@@ -48,7 +48,7 @@
 		<connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
 			<dataSource class="com.alibaba.druid.pool.DruidDataSource">
 				<driverClassName>net.sourceforge.jtds.jdbc.Driver</driverClassName>
-				<url>jdbc:jtds:sqlserver://localhost:1433/arbitration</url>
+				<url>jdbc:jtds:sqlserver://192.168.56.101:1433/arbitration</url>
 				<username>sa</username>
 				<password>111</password>
 			</dataSource>
