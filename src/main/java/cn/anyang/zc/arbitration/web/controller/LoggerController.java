@@ -20,7 +20,7 @@ import cn.anyang.zc.arbitration.service.LoggerService;
 @RequestMapping("/logger")
 public class LoggerController {
 
-	private final Logger logger = LoggerFactory.getLogger(LoggerController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoggerController.class);
 
 	@Autowired
 	private LoggerService loggerService;

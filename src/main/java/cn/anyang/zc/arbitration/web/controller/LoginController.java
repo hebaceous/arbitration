@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.anyang.zc.arbitration.domain.User;
 import cn.anyang.zc.arbitration.model.DwzAjaxModel;
 import cn.anyang.zc.arbitration.service.UserService;
-import cn.anyang.zc.arbitration.utils.DwzAjaxUtils;
+import cn.anyang.zc.arbitration.util.DwzAjaxUtils;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 
-	private final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@Autowired
 	private UserService userService;

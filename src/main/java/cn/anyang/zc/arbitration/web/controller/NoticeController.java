@@ -27,7 +27,7 @@ import cn.anyang.zc.arbitration.service.ReceiptService;
 @RequestMapping("/notice")
 public class NoticeController {
 
-	private final Logger logger = LoggerFactory.getLogger(NoticeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
 
 	@Autowired
 	private CaseService caseService;

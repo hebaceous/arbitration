@@ -10,7 +10,7 @@ import cn.anyang.zc.arbitration.mapper.StatisticsMapper;
 import cn.anyang.zc.arbitration.service.CaseService;
 import cn.anyang.zc.arbitration.service.StatisticsService;
 import cn.anyang.zc.arbitration.service.UserService;
-import cn.anyang.zc.arbitration.utils.Global;
+import cn.anyang.zc.arbitration.util.Global;
 
 @Service
 public class StatisticsServiceImpl implements StatisticsService {

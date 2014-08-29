@@ -19,7 +19,7 @@ import cn.anyang.zc.arbitration.service.StatisticsService;
 @RequestMapping("/statistics")
 public class StatisticsController {
 
-	private final Logger logger = LoggerFactory.getLogger(StatisticsController.class);
+	private static final Logger logger = LoggerFactory.getLogger(StatisticsController.class);
 
 	@Autowired
 	private StatisticsService statisticsService;

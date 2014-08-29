@@ -1,6 +1,11 @@
-package cn.anyang.zc.arbitration.utils;
+package cn.anyang.zc.arbitration.util;
 
 import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import cn.anyang.zc.arbitration.domain.User;
 
 public class ArbitrationUtils {
 
@@ -61,6 +66,20 @@ public class ArbitrationUtils {
 		}
 		String result =  sb.substring(0, sb.length()-1);
 		return result;
+	}
+
+	/**
+	 * 根据session获取当前Session中的用户
+	 */
+	public static User getSessionUser(HttpSession session) {
+		return (User) session.getAttribute("user");
+	}
+
+	/**
+	 * 根据request获取当前Session中的用户
+	 */
+	public static User getSessionUser(HttpServletRequest request) {
+		return getSessionUser(request.getSession());
 	}
 
 }

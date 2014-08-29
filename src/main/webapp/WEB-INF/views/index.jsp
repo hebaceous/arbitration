@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -197,7 +197,7 @@ function initIndexData() {
 							<li><a href="${pageContext.request.contextPath }/statistics/count" target="navTab" rel="statisticsCount">案件数量统计</a></li>
 							<li><a href="${pageContext.request.contextPath }/statistics/type" target="navTab" rel="statisticsType">案件类型统计</a></li>
 							<li><a href="${pageContext.request.contextPath }/statistics/secretary" target="navTab" rel="statisticsSecretary">人员办案统计</a></li>
-							<li><a href="${pageContext.request.contextPath }/statistics/cost" target="navTab" rel="statisticsCost">案件费用统计</a></li>
+							<%-- <li><a href="${pageContext.request.contextPath }/statistics/cost" target="navTab" rel="statisticsCost">案件费用统计</a></li> --%>
 						</ul>
 					</div>
 					<div class="accordionHeader">

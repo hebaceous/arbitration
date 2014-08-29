@@ -1,4 +1,4 @@
-package cn.anyang.zc.arbitration.utils;
+package cn.anyang.zc.arbitration.util;
 
 public class Global {
 

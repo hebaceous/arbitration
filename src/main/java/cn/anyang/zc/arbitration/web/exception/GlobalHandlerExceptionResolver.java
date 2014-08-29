@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public class GlobalHandlerExceptionResolver implements HandlerExceptionResolver {
 
-	private Logger logger = LoggerFactory.getLogger(GlobalHandlerExceptionResolver.class);
+	private static final Logger logger = LoggerFactory.getLogger(GlobalHandlerExceptionResolver.class);
 
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {

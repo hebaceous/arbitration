@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 
 <div class="pageContent">
 	<form method="post" action="${pageContext.request.contextPath }/login/loginDialog" class="pageForm" onsubmit="return validateCallback(this, dialogAjaxDone)">

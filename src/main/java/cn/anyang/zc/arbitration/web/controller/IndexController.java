@@ -1,7 +1,6 @@
 package cn.anyang.zc.arbitration.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import cn.anyang.zc.arbitration.domain.User;
 import cn.anyang.zc.arbitration.service.CaseService;
 import cn.anyang.zc.arbitration.service.ReceiptService;
+import cn.anyang.zc.arbitration.util.ArbitrationUtils;
 
 @Controller
 @RequestMapping("/")
@@ -24,14 +24,10 @@ public class IndexController {
 	private ReceiptService receiptService;
 
 	@RequestMapping(method=RequestMethod.GET)
-	public String index(HttpServletRequest request, HttpServletResponse response, Model model) {
-		User user = (User) request.getSession().getAttribute("user");
+	public String index(HttpServletRequest request, Model model) {
+		User user = ArbitrationUtils.getSessionUser(request);
 		if(user == null){
-			try {
-				request.getRequestDispatcher("/login").forward(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			return "redirect:/login";
 		} else {
 			Integer rid = user.getRole().getId();
 			switch (rid) {

@@ -25,15 +25,15 @@ import cn.anyang.zc.arbitration.model.DwzAjaxModel;
 import cn.anyang.zc.arbitration.service.ArbitratorDetailService;
 import cn.anyang.zc.arbitration.service.ArbitratorService;
 import cn.anyang.zc.arbitration.service.CaseService;
-import cn.anyang.zc.arbitration.utils.ArbitrationUtils;
-import cn.anyang.zc.arbitration.utils.DwzAjaxUtils;
-import cn.anyang.zc.arbitration.utils.Global;
+import cn.anyang.zc.arbitration.util.ArbitrationUtils;
+import cn.anyang.zc.arbitration.util.DwzAjaxUtils;
+import cn.anyang.zc.arbitration.util.Global;
 
 @Controller
 @RequestMapping("/arbitrator")
 public class ArbitratorController {
 
-	private final Logger logger = LoggerFactory.getLogger(ArbitratorController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ArbitratorController.class);
 
 	@Autowired
 	private CaseService caseService;

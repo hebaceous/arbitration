@@ -14,7 +14,7 @@ import cn.anyang.zc.arbitration.domain.Award;
 import cn.anyang.zc.arbitration.domain.Case;
 import cn.anyang.zc.arbitration.service.AwardService;
 import cn.anyang.zc.arbitration.service.CaseService;
-import cn.anyang.zc.arbitration.utils.Global;
+import cn.anyang.zc.arbitration.util.Global;
 
 @Controller
 @RequestMapping("/award")

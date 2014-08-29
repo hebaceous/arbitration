@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.anyang.zc.arbitration.domain.Applicant;
 import cn.anyang.zc.arbitration.domain.User;
 import cn.anyang.zc.arbitration.service.ApplicantService;
-import cn.anyang.zc.arbitration.utils.Global;
+import cn.anyang.zc.arbitration.util.Global;
 
 @Controller
 @RequestMapping("/applicant")
 public class ApplicantController {
 
-	private final Logger logger = LoggerFactory.getLogger(ApplicantController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ApplicantController.class);
 
 	@Autowired
 	private ApplicantService applicantService;

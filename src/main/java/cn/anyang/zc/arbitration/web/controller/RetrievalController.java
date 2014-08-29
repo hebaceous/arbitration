@@ -15,13 +15,13 @@ import cn.anyang.zc.arbitration.domain.User;
 import cn.anyang.zc.arbitration.model.PageModel;
 import cn.anyang.zc.arbitration.model.ResultModel;
 import cn.anyang.zc.arbitration.service.RetrievalService;
-import cn.anyang.zc.arbitration.utils.Global;
+import cn.anyang.zc.arbitration.util.Global;
 
 @Controller
 @RequestMapping("/retrieval")
 public class RetrievalController {
 
-	private final Logger logger = LoggerFactory.getLogger(RetrievalController.class);
+	private static final Logger logger = LoggerFactory.getLogger(RetrievalController.class);
 
 	@Autowired
 	private RetrievalService retrievalService;

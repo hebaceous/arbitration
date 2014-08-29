@@ -23,14 +23,14 @@ import cn.anyang.zc.arbitration.model.PageModel;
 import cn.anyang.zc.arbitration.model.ResultModel;
 import cn.anyang.zc.arbitration.service.RoleService;
 import cn.anyang.zc.arbitration.service.UserService;
-import cn.anyang.zc.arbitration.utils.ArbitrationUtils;
-import cn.anyang.zc.arbitration.utils.DwzAjaxUtils;
+import cn.anyang.zc.arbitration.util.ArbitrationUtils;
+import cn.anyang.zc.arbitration.util.DwzAjaxUtils;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
-	private final Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
 	private UserService userService;

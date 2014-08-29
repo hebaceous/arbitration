@@ -42,15 +42,15 @@ import cn.anyang.zc.arbitration.service.CaseService;
 import cn.anyang.zc.arbitration.service.NoticeService;
 import cn.anyang.zc.arbitration.service.ReceiptService;
 import cn.anyang.zc.arbitration.service.UserService;
-import cn.anyang.zc.arbitration.utils.ArbitrationUtils;
-import cn.anyang.zc.arbitration.utils.DwzAjaxUtils;
-import cn.anyang.zc.arbitration.utils.Global;
+import cn.anyang.zc.arbitration.util.ArbitrationUtils;
+import cn.anyang.zc.arbitration.util.DwzAjaxUtils;
+import cn.anyang.zc.arbitration.util.Global;
 
 @Controller
 @RequestMapping("/flow")
 public class FlowController {
 
-	private final Logger logger = LoggerFactory.getLogger(FlowController.class);
+	private static final Logger logger = LoggerFactory.getLogger(FlowController.class);
 
 	@Autowired
 	private ApplicantService applicantService;

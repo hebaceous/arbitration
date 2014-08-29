@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="pageContent">
 	<form method="post" action="${pageContext.request.contextPath }/user/insert" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">

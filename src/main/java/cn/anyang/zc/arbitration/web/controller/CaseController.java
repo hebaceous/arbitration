@@ -35,14 +35,14 @@ import cn.anyang.zc.arbitration.service.ApplicantService;
 import cn.anyang.zc.arbitration.service.ArbitratorDetailService;
 import cn.anyang.zc.arbitration.service.CaseService;
 import cn.anyang.zc.arbitration.service.NoticeService;
-import cn.anyang.zc.arbitration.utils.DwzAjaxUtils;
-import cn.anyang.zc.arbitration.utils.Global;
+import cn.anyang.zc.arbitration.util.DwzAjaxUtils;
+import cn.anyang.zc.arbitration.util.Global;
 
 @Controller
 @RequestMapping("/case")
 public class CaseController {
 
-	private final Logger logger = LoggerFactory.getLogger(CaseController.class);
+	private static final Logger logger = LoggerFactory.getLogger(CaseController.class);
 
 	@Autowired
 	private CaseService caseService;
