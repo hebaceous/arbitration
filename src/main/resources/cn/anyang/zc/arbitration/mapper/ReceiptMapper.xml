@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.anyang.zc.arbitration.mapper.ReceiptMapper">
 
-	<cache/>
-
 	<sql id="receipt">id,cause,addressee,address,mode,files,contents,piece,deliveredDate,reason,secretary,processServer,description,receiver,receiptDate,isReceive,status</sql>
 	<!-- 没有receiptDate(收到日期) -->
 	<sql id="insertReceipt">id,cause,addressee,address,mode,files,contents,piece,deliveredDate,reason,secretary,processServer,description,receiver,isReceive,status</sql>

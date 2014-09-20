@@ -205,6 +205,7 @@ function initIndexData() {
 					</div>
 					<div class="accordionContent">
 						<ul class="tree treeFolder collapse">
+							<li><a href="${pageContext.request.contextPath }/case" target="navTab" rel="user">案件管理</a></li>
 							<li><a href="${pageContext.request.contextPath }/user" target="navTab" rel="user">用户管理</a></li>
 							<li><a href="${pageContext.request.contextPath }/logger" target="navTab" rel="logger">系统日志</a></li>
 						</ul>
@@ -533,7 +534,7 @@ function initIndexData() {
 			<div id="sidebar">
 				<div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
 				<div class="accordion" fillSpace="sidebar">
-					<c:if test="${user.name == '李津' }">
+					<c:if test="${user.name == '李津'}">
 						<div class="accordionHeader">
 							<h2><span>Folder</span>案件受理</h2>
 						</div>
@@ -1048,7 +1049,10 @@ function initIndexData() {
 					</div>
 					<div class="accordionContent">
 						<ul class="tree treeFolder collapse">
-							<li><a href="${pageContext.request.contextPath }/case/123ing" target="navTab" rel="123ing">审批中的仲裁申请</a></li>
+							<li><a href="${pageContext.request.contextPath }/flow/0" target="navTab" rel="insertCase">添加仲裁申请</a></li>
+								<li><a href="${pageContext.request.contextPath }/case/123ing/${user.id }" target="navTab" rel="123ing">审批中的仲裁申请</a></li>
+								<li><a href="${pageContext.request.contextPath }/case/123ed/${user.id }" target="navTab" rel="123ed">审批通过仲裁申请</a></li>
+								<li><a href="${pageContext.request.contextPath }/case/notice1List?uid=${user.id }" target="navTab" rel="notice1List">受理通知书</a></li>
 						</ul>
 					</div>
 					<div class="accordionHeader">

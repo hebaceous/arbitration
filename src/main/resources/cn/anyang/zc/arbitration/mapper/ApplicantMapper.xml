@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.anyang.zc.arbitration.mapper.ApplicantMapper">
 
-	<cache/>
-
 	<sql id="applicant">
 		id,name,sex,identityCard,phone,address,type,organization,post,proxy_spokesman,
 		proxy_proxy1,proxy_proxy2,proxy_organization,proxy_contact,proxy_power,isApplicant,cid

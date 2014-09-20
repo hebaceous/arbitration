@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<form id="pagerForm" method="post" action="${pageContext.request.contextPath }/retrieval/case">
+<form id="pagerForm" method="post" action="${pageContext.request.contextPath }/case">
 	<input type="hidden" name="pageNum" value="1" />
 	<input type="hidden" name="numPerPage" value="${model.numPerPage}" />
 	<input type="hidden" name="keyword" value="${param.keyword}" />
@@ -12,7 +12,7 @@
 </form>
 
 <div class="pageHeader">
-	<form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath }/retrieval/case" method="post">
+	<form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath }/case" method="post">
 	<div class="searchBar">
 		<table class="searchContent">
 			<tr>
@@ -32,7 +32,7 @@
 </div>
 
 <div class="pageContent">
-	<div id="retrieval_caseList">
+	<div id="caseList">
 	<table class="list" width="100%" targetType="navTab" layoutH="116">
 		<thead>
 			<tr>
@@ -54,6 +54,7 @@
 				<th orderField="concludedDate" <c:if test='${param.orderField == "concludedDate" }'>class="${param.orderDirection}"</c:if>>结案时间</th>
 				<th>开庭笔录</th>
 				<th width="150" orderField="status" <c:if test='${param.orderField == "status" }'>class="${param.orderDirection}"</c:if>>结果</th>
+				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -119,6 +120,9 @@
 						<c:when test="${c.status == 23 }">案件归档</c:when>
 						<c:when test="${c.status == 24 }">已结案</c:when>
 					</c:choose>
+				</td>
+				<td>
+					<a title="确定要删除吗？" target="ajaxTodo" href="${pageContext.request.contextPath }/case/delete/${c.id }" class="btnDel" rel="caseList">删除</a>
 				</td>
 			</tr>
 		</c:forEach>

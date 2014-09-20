@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +33,7 @@ import cn.anyang.zc.arbitration.domain.ArbitratorDetail;
 import cn.anyang.zc.arbitration.domain.Case;
 import cn.anyang.zc.arbitration.domain.User;
 import cn.anyang.zc.arbitration.model.DwzAjaxModel;
+import cn.anyang.zc.arbitration.model.PageModel;
 import cn.anyang.zc.arbitration.model.PageModelNotice123;
 import cn.anyang.zc.arbitration.model.ResultModel;
 import cn.anyang.zc.arbitration.service.ApplicantService;
@@ -398,6 +403,70 @@ public class CaseController {
 		String[] names = this.getApplicantsAndRespondentsName(id);
 		model.addAttribute("names", names);
 		return "case/notice3";
+	}
+
+	/**
+	 * 案件管理模块 2014-09-20
+	 */
+	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
+	public String list(@ModelAttribute PageModel pageModel, Model model) {
+		ResultModel resultModel = this.caseService.search(pageModel);
+		model.addAttribute("model", resultModel);
+		return "case/caseList";
+	}
+
+	/**
+	 * 这里省的麻烦，直接注入DataSource
+	 */
+	@Autowired
+	private DataSource dataSource;
+	/**
+	 *  注意：去除mybatis cache
+	 *  删除案件 cases : id
+	 * 	同时删除 
+	 * 	applicant : cid
+	 * 	arbitrator : id
+	 *  arbitratorDetails : id like '[caseid]%'
+	 *  awards : id
+	 *  notice : id like '[caseid]%'
+	 *  receipt : id like '[caseid]%'
+	 */
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.POST)
+	public @ResponseBody DwzAjaxModel delete(@PathVariable String id, HttpSession session) {
+		logger.info("用户[{}]删除案件[{}]", ((User)session.getAttribute("user")).getName(), id);
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			connection = dataSource.getConnection();
+			statement = connection.createStatement();
+			statement.addBatch("delete from cases where id = '" + id + "'");
+			statement.addBatch("delete from applicant where cid = '" + id + "'");
+			statement.addBatch("delete from arbitrator where id = '" + id + "'");
+			statement.addBatch("delete from arbitratorDetails where id like '" + id + "%'");
+			statement.addBatch("delete from awards where id = '" + id + "'");
+			statement.addBatch("delete from notice where id like '" + id + "%'");
+			statement.addBatch("delete from receipt where id like '" + id + "%'");
+			statement.executeBatch();
+			return DwzAjaxUtils.ok();
+		} catch (SQLException e) {
+			logger.error("删除案件失败，案件id=[{}]", id,  e);
+		} finally {
+			if(statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return DwzAjaxUtils.error();
 	}
 
 }

@@ -14,7 +14,8 @@
 			</p>
 			<p>
 				<label>开庭时间：</label>
-				<input type="text" name="courtDate" class="date required" dateFmt="y年M月d日 H点" readonly="readonly">
+				<%-- FlowController[525行] --%>
+				<input type="text" name="courtDate" class="date required" dateFmt="yyyy年MM月dd日 HH点mm分" readonly="readonly">
 				<a class="inputDateButton" href="javascript:;">选择</a>
 			</p>
 		</div>

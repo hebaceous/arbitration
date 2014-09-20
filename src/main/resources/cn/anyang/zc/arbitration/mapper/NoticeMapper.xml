@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.anyang.zc.arbitration.mapper.NoticeMapper">
 
-	<cache/>
-
 	<sql id="notice">id,cause,applicant,respondent,deliveredDate,courtDate,secretary,auditor</sql>
 
 	<insert id="insert" parameterType="Notice">

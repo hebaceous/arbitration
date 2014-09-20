@@ -63,6 +63,6 @@
 			</select>
 			<span>条，共${model.totalCount }条</span>
 		</div>
-		<div class="pagination" targetType="navTab" totalCount="${model.totalCount }" numPerPage="${model.numPerPage }" pageNumShown="${model.totalCount/model.numPerPage == 0 ? model.totalCount/model.numPerPage:model.totalCount/model.numPerPage+1 }" currentPage="${model.pageNum }"></div>
+		<div class="pagination" targetType="navTab" totalCount="${model.totalCount }" numPerPage="${model.numPerPage }" pageNumShown="10" currentPage="${model.pageNum }"></div>
 	</div>
 </div>

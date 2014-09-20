@@ -61,7 +61,7 @@ function doPrint() {
 		<tr class="tr2">
 			<td>
 				现决定<span>${names[0] }</span>与<span>${names[1] }</span>一案，于
-				<fmt:formatDate value="${c.courtDate }" pattern="yyyy年MM月dd日HH时KK分"/>在安阳仲裁委员会仲裁庭开庭仲裁，请准时到庭。
+				<fmt:formatDate value="${c.courtDate }" pattern="yyyy年MM月dd日 HH点mm分"/>在安阳仲裁委员会仲裁庭开庭仲裁，请准时到庭。
 			</td>
 		</tr>
 		<tr class="tr3">

@@ -76,6 +76,7 @@ function applicantType(object) {
 	var $identityCardDL = $fieldset.children("dl:eq(6)");	//身份证号
 	var $addressDL = $fieldset.children("dl:eq(8)");	//地址、住所地
 	if($(object).val() == 0){	//公民
+		$organizationDL.find('input').removeClass('required');
 		$organizationDL.hide();
 		$postDL.hide();
 		$nameDL.show();
@@ -86,6 +87,7 @@ function applicantType(object) {
 	} else if($(object).val() == 1){	//法人
 		$sexDL.hide();
 		$identityCardDL.hide();
+		$organizationDL.find('input').addClass('required');
 		$organizationDL.show();
 		$postDL.show();
 		$organizationDL.children("dt").text("单位名称：");
@@ -94,6 +96,7 @@ function applicantType(object) {
 	} else if($(object).val() == 2){	//其它组织
 		$sexDL.hide();
 		$identityCardDL.hide();
+		$organizationDL.find('input').addClass('required');
 		$organizationDL.show();
 		$postDL.show();
 		$organizationDL.children("dt").text("组织名称：");

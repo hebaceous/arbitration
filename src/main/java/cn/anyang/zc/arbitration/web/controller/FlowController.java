@@ -522,10 +522,9 @@ public class FlowController {
 		notice.setId(rid);
 		Date courtDate = null;
 		try {
-			courtDate = new SimpleDateFormat("yyyy年MM月dd日 HH点").parse(request.getParameter("courtDate"));
+			courtDate = new SimpleDateFormat("yyyy年MM月dd日 HH点mm分").parse(request.getParameter("courtDate"));
 		} catch (ParseException e) {
-			e.printStackTrace();
-			System.out.println("转换开庭时间出错");
+			logger.error("转换开庭时间出错rid=[{}]", rid, e);
 		}
 		notice.setCourtDate(courtDate);
 		notice.setDeliveredDate(new Date());
