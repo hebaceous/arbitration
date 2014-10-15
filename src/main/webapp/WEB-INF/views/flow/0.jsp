@@ -69,14 +69,14 @@ function removeApplicant(object) {
 }
 function applicantType(object) {
 	var $fieldset = $(object).parents("fieldset");
-	var $organizationDL = $fieldset.children("dl:eq(2)");	//单位、组织
-	var $nameDL = $fieldset.children("dl:eq(3)");	//姓名、法定代表人
+	var $nameDL = $fieldset.children("dl:eq(2)");	//姓名、单位(组织)名称
+	var $organizationDL = $fieldset.children("dl:eq(3)");	//法定代表人
 	var $postDL = $fieldset.children("dl:eq(4)");	//职务
 	var $sexDL = $fieldset.children("dl:eq(5)");	//性别
 	var $identityCardDL = $fieldset.children("dl:eq(6)");	//身份证号
 	var $addressDL = $fieldset.children("dl:eq(8)");	//地址、住所地
 	if($(object).val() == 0){	//公民
-		$organizationDL.find('input').removeClass('required');
+		//$organizationDL.find('input').removeClass('required');
 		$organizationDL.hide();
 		$postDL.hide();
 		$nameDL.show();
@@ -87,19 +87,19 @@ function applicantType(object) {
 	} else if($(object).val() == 1){	//法人
 		$sexDL.hide();
 		$identityCardDL.hide();
-		$organizationDL.find('input').addClass('required');
+		//$organizationDL.find('input').addClass('required');
 		$organizationDL.show();
 		$postDL.show();
-		$organizationDL.children("dt").text("单位名称：");
-		$nameDL.children("dt").text("法定代表人：");
+		$nameDL.children("dt").text("单位名称：");
+		$organizationDL.children("dt").text("法定代表人：");
 		$addressDL.children("dt").text("住所地：");
 	} else if($(object).val() == 2){	//其它组织
 		$sexDL.hide();
 		$identityCardDL.hide();
-		$organizationDL.find('input').addClass('required');
+		//$organizationDL.find('input').addClass('required');
 		$organizationDL.show();
 		$postDL.show();
-		$organizationDL.children("dt").text("组织名称：");
+		$nameDL.children("dt").text("组织名称：");
 	}
 }
 
@@ -162,13 +162,13 @@ $("#id").unbind("blur").bind("blur",function(){
 				<dd><div class="button"><div class="buttonContent"><button type="button" onclick="removeApplicant(this);">点击删除</button></div></div></dd>
 			</dl>
 			<div class="divider"></div>
-			<dl style="display: none;">	<%-- dl eq(2) --%>
+			<dl>
+				<dt>姓名：</dt>	<%-- dl eq(2) --%>
+				<dd><input name="applicants.name" class="textInput required" type="text"/></dd>
+			</dl>
+			<dl style="display: none;">	<%-- dl eq(3) --%>
 				<dt>单位名称：</dt>
 				<dd><input name="applicants.organization" class="textInput" type="text"/></dd>
-			</dl>
-			<dl>
-				<dt>姓名：</dt>	<%-- dl eq(3) --%>
-				<dd><input name="applicants.name" class="textInput required" type="text"/></dd>
 			</dl>
 			<dl style="display: none;">	<%-- dl eq(4) --%>
 				<dt>职务：</dt>
@@ -259,13 +259,13 @@ $("#id").unbind("blur").bind("blur",function(){
 				<dd><div class="button"><div class="buttonContent"><button type="button" onclick="removeApplicant(this);">点击删除</button></div></div></dd>
 			</dl>
 			<div class="divider"></div>
-			<dl style="display: none;">
-				<dt>单位名称：</dt>
-				<dd><input name="applicants.organization" class="textInput" type="text"/></dd>
-			</dl>
 			<dl>
 				<dt>姓名：</dt>
 				<dd><input name="applicants.name" class="textInput required" type="text"/></dd>
+			</dl>
+			<dl style="display: none;">
+				<dt>单位名称：</dt>
+				<dd><input name="applicants.organization" class="textInput" type="text"/></dd>
 			</dl>
 			<dl style="display: none;">
 				<dt>职务：</dt>

@@ -205,7 +205,6 @@ function initIndexData() {
 					</div>
 					<div class="accordionContent">
 						<ul class="tree treeFolder collapse">
-							<li><a href="${pageContext.request.contextPath }/case" target="navTab" rel="user">案件管理</a></li>
 							<li><a href="${pageContext.request.contextPath }/user" target="navTab" rel="user">用户管理</a></li>
 							<li><a href="${pageContext.request.contextPath }/logger" target="navTab" rel="logger">系统日志</a></li>
 						</ul>
@@ -993,6 +992,14 @@ function initIndexData() {
 							<li><a href="${pageContext.request.contextPath }/statistics/count" target="navTab" rel="statisticsCount">案件数量统计</a></li>
 							<li><a href="${pageContext.request.contextPath }/statistics/type" target="navTab" rel="statisticsType">案件类型统计</a></li>
 							<li><a href="${pageContext.request.contextPath }/statistics/secretary" target="navTab" rel="statisticsSecretary">人员办案统计</a></li>
+						</ul>
+					</div>
+					<div class="accordionHeader">
+						<h2><span>Folder</span>系统管理</h2>
+					</div>
+					<div class="accordionContent">
+						<ul class="tree treeFolder collapse">
+							<li><a href="${pageContext.request.contextPath }/case" target="navTab" rel="user">案件管理</a></li>
 						</ul>
 					</div>
 				</div>
