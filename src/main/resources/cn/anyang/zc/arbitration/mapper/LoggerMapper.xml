@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.anyang.zc.arbitration.mapper.LoggerMapper">
 
-	<cache/>
-
 	<sql id="logging_event">event_id,time,level_string,formatted_message</sql>
 
 	<select id="count" parameterType="cn.anyang.zc.arbitration.model.PageModel" resultType="java.lang.Integer">

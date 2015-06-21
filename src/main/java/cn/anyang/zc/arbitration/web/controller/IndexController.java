@@ -64,7 +64,7 @@ public class IndexController {
 					Integer count20 = this.caseService.countByStatus(20);
 					model.addAttribute("count20", count20);
 					break;
-				case 4:		//仲裁秘书
+				case 4:		//普通仲裁秘书
 					// 需要第一次送达回证的案件数量
 					Integer count5 = this.caseService.countByStatusAndUID(5, user.getId());
 					model.addAttribute("count5", count5);
@@ -140,6 +140,38 @@ public class IndexController {
 					// 需要归档的案件
 					Integer count24 = this.caseService.countByStatus(24);
 					model.addAttribute("count24", count24);
+					break;
+				case 9:		//立案秘书
+					// 需要第一次送达回证的案件数量
+					count5 = this.caseService.countByStatusAndUID(5, user.getId());
+					model.addAttribute("count5", count5);
+					// 需要完善的送达回证
+					count6receipt = this.receiptService.countByTimesAndUIDAndStatus(1, user.getId(), 1);
+					model.addAttribute("count6receipt", count6receipt);
+					// 需要发文书的
+					count6notice = this.receiptService.countByTimesAndUIDAndStatus(1, user.getId(), 2);
+					model.addAttribute("count6notice", count6notice);
+					// 选仲裁员的
+					count9 = this.caseService.countByStatusAndUID(9, user.getId());
+					model.addAttribute("count9", count9);
+					// 需要第二次送达回证的案件数量
+					count14 = this.caseService.countByStatusAndUID(14, user.getId());
+					model.addAttribute("count14", count14);
+					// 需要完善的送达回证
+					count15receipt = this.receiptService.countByTimesAndUIDAndStatus(2, user.getId(), 1);
+					model.addAttribute("count15receipt", count15receipt);
+					// 上传开庭笔录
+					count16 = this.caseService.countByStatusAndUID(16, user.getId());
+					model.addAttribute("count16", count16);
+					// 下达裁决书
+					count17 = this.caseService.countByStatusAndUID(17, user.getId());
+					model.addAttribute("count17", count17);
+					// 需要第三次送达回证的案件数量
+					count21 = this.caseService.countByStatusAndUID(21, user.getId());
+					model.addAttribute("count21", count21);
+					// 需要完善的送达回证
+					count22receipt = this.receiptService.countByTimesAndUIDAndStatus(3, user.getId(), 1);
+					model.addAttribute("count22receipt", count22receipt);
 					break;
 				default:
 					break;

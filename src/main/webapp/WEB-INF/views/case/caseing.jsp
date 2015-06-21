@@ -33,15 +33,45 @@
 				<td>
 					<!-- 简易 -->
 					<c:if test="${c.type == 0 }">
-						<c:if test="${c.status>=4 && c.status<=12 }"><span class="day_thing">组庭</span>还剩<span class="day"><fmt:formatNumber value="${9-((now.time-c.registerDate.time)-(now.time-c.registerDate.time)%86400000)/86400000 }" pattern="#"/></span>天<br/></c:if>
-						<c:if test="${c.status>=14 && c.status<=15 }"><span class="day_thing">开庭</span>还剩<span class="day"><fmt:formatNumber value="${6-((now.time-c.formationDate.time)-(now.time-c.formationDate.time)%86400000)/86400000 }" pattern="#"/></span>天<br/></c:if>
-						<c:if test="${c.status>=16 && c.status<=24 }"><span class="day_thing">结案</span>还剩<span class="day"><fmt:formatNumber value="${59-((now.time-c.formationDate.time)-(now.time-c.formationDate.time)%86400000)/86400000 }" pattern="#"/></span>天<br/></c:if>
+						<c:if test="${c.status>=4 && c.status<=12 }">
+							<fmt:formatNumber var="days" value="${9-((now.time-c.registerDate.time)-(now.time-c.registerDate.time)%86400000)/86400000 }" pattern="#"/>
+							<span class="day_thing">组庭</span>
+							${days >=0 ? '还剩' : '已超过' }
+							<span class="day">${days >= 0 ? days : -days }</span>天<br/>
+						</c:if>
+						<c:if test="${c.status>=14 && c.status<=15 }">
+							<fmt:formatNumber var="days" value="${6-((now.time-c.formationDate.time)-(now.time-c.formationDate.time)%86400000)/86400000 }" pattern="#"/>
+							<span class="day_thing">开庭</span>
+							${days >=0 ? '还剩' : '已超过' }
+							<span class="day">${days >= 0 ? days : -days }</span>天<br/>
+						</c:if>
+						<c:if test="${c.status>=16 && c.status<=24 }">
+							<fmt:formatNumber var="days" value="${59-((now.time-c.formationDate.time)-(now.time-c.formationDate.time)%86400000)/86400000 }" pattern="#"/>
+							<span class="day_thing">结案</span>
+							${days >=0 ? '还剩' : '已超过' }
+							<span class="day">${days >= 0 ? days : -days }</span>天<br/>
+						</c:if>
 					</c:if>
 					<!-- 普通 -->
 					<c:if test="${c.type == 1 }">
-						<c:if test="${c.status>=4 && c.status<=12 }"><span class="day_thing">组庭</span>还剩<span class="day"><fmt:formatNumber value="${14-((now.time-c.registerDate.time)-(now.time-c.registerDate.time)%86400000)/86400000 }" pattern="#"/></span>天<br/></c:if>
-						<c:if test="${c.status>=14 && c.status<=15 }"><span class="day_thing">开庭</span>还剩<span class="day"><fmt:formatNumber value="${6-((now.time-c.formationDate.time)-(now.time-c.formationDate.time)%86400000)/86400000 }" pattern="#"/></span>天<br/></c:if>
-						<c:if test="${c.status>=16 && c.status<=24 }"><span class="day_thing">结案</span>还剩<span class="day"><fmt:formatNumber value="${119-((now.time-c.formationDate.time)-(now.time-c.formationDate.time)%86400000)/86400000 }" pattern="#"/></span>天<br/></c:if>
+						<c:if test="${c.status>=4 && c.status<=12 }">
+							<fmt:formatNumber var="days" value="${14-((now.time-c.registerDate.time)-(now.time-c.registerDate.time)%86400000)/86400000 }" pattern="#"/>
+							<span class="day_thing">组庭</span>
+							${days >=0 ? '还剩' : '已超过' }
+							<span class="day">${days >= 0 ? days : -days }</span>天<br/>
+						</c:if>
+						<c:if test="${c.status>=14 && c.status<=15 }">
+							<fmt:formatNumber var="days" value="${6-((now.time-c.formationDate.time)-(now.time-c.formationDate.time)%86400000)/86400000 }" pattern="#"/>
+							<span class="day_thing">开庭</span>
+							${days >=0 ? '还剩' : '已超过' }
+							<span class="day">${days >= 0 ? days : -days }</span>天<br/>
+						</c:if>
+						<c:if test="${c.status>=16 && c.status<=24 }">
+							<fmt:formatNumber var="days" value="${119-((now.time-c.formationDate.time)-(now.time-c.formationDate.time)%86400000)/86400000 }" pattern="#"/>
+							<span class="day_thing">结案</span>
+							${days >=0 ? '还剩' : '已超过' }
+							<span class="day">${days >= 0 ? days : -days }</span>天<br/>
+						</c:if>
 					</c:if>
 				</td>
 				<td>

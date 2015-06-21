@@ -86,7 +86,7 @@ function initDWZ(){
 		callback : function() {
 			initEnv();
 			$("#themeList").theme({themeBase:"${pageContext.request.contextPath }/dwz/themes"}); // themeBase 相对于index页面的主题base路径
-			//$("#sidebar .toggleCollapse div").trigger("click");
+			// $("#sidebar .toggleCollapse div").trigger("click");
 		}
 	});
 }
@@ -95,7 +95,7 @@ function initDWZ(){
  * 初始化主页数据
  */
 var rid = ${user.role.id };
-if(rid == 4 || rid == 7 || rid == 8){ initDWZ(); }
+if(rid == 4 || rid == 7 || rid == 8 || rid == 9){ initDWZ(); }
 var count = 0;
 var parameter = { timestamp : new Date() };
 var loadCallback = function(){
@@ -522,8 +522,8 @@ function initIndexData() {
 			</div>
 		</div>
 	</c:when>
-	<%-- 仲裁秘书菜单 --%>
-	<c:when test="${user.role.id == 4 }">
+	<%-- 普通仲裁秘书(4)/立案秘书(9)菜单 --%>
+	<c:when test="${user.role.id == 4 || user.role.id == 9 }">
 		<div id="leftside">
 			<div id="sidebar_s">
 				<div class="collapse">
@@ -533,7 +533,7 @@ function initIndexData() {
 			<div id="sidebar">
 				<div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
 				<div class="accordion" fillSpace="sidebar">
-					<c:if test="${user.name == '李津'}">
+					<c:if test="${user.role.id == 9 }">
 						<div class="accordionHeader">
 							<h2><span>Folder</span>案件受理</h2>
 						</div>
