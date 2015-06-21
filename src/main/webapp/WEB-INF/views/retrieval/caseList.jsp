@@ -53,6 +53,7 @@
 				<th orderField="formationDate" <c:if test='${param.orderField == "formationDate" }'>class="${param.orderDirection}"</c:if>>组庭时间</th>
 				<th orderField="concludedDate" <c:if test='${param.orderField == "concludedDate" }'>class="${param.orderDirection}"</c:if>>结案时间</th>
 				<th>开庭笔录</th>
+				<th>裁决书</th>
 				<th width="150" orderField="status" <c:if test='${param.orderField == "status" }'>class="${param.orderDirection}"</c:if>>结果</th>
 			</tr>
 		</thead>
@@ -92,7 +93,12 @@
 				<td><fmt:formatDate value="${c.concludedDate }" type="date"/></td>
 				<td>
 					<c:if test="${c.status>16 }">
-						<a href="${pageContext.request.contextPath }/case/download/${c.id }">点击下载</a>
+						<a href="${pageContext.request.contextPath }/case/download/hearingRecord/${c.id }">点击下载</a>
+					</c:if>
+				</td>
+				<td>
+					<c:if test="${c.status>16 }">
+						<a href="${pageContext.request.contextPath }/case/download/award/${c.id }">点击下载</a>
 					</c:if>
 				</td>
 				<td>

@@ -19,6 +19,7 @@ import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -261,20 +262,24 @@ public class CaseController {
 		return "case/101112ed";
 	}
 
+	@Value("${dir.hearingRecord}")
+	private String dir_hearingRecord;
+
+	@Value("${dir.award}")
+	private String dir_award;
+
 	/**
 	 * 下载开庭笔录
 	 */
-	@RequestMapping("/download/{id}")
-	public void download(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping("/download/hearingRecord/{id}")
+	public void downloadHearingRecord(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) {
 		logger.info("用户[{}]下载[{}]号案件的开庭笔录。", ((User)request.getSession().getAttribute("user")).getName(), id);
 
 		Case case1 = this.caseService.get(id);
 		String hearingRecord = case1.getHearingRecord();
-		String path = request.getServletContext().getRealPath(hearingRecord);
-		String filename = hearingRecord.substring(hearingRecord.lastIndexOf(File.separator)+1);
 		try {
-			response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8"));
-			FileInputStream in = new FileInputStream(path);
+			response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(hearingRecord, "UTF-8"));
+			FileInputStream in = new FileInputStream(dir_hearingRecord + File.separator + hearingRecord);
 			int len = 0;
 			byte[] buffer = new byte[1024];
 			OutputStream out = response.getOutputStream();
@@ -285,6 +290,31 @@ public class CaseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.warn("用户[{}]下载[{}]号案件的开庭笔录时出错！", ((User)request.getSession().getAttribute("user")).getName(), id, e);
+		}
+	}
+
+	/**
+	 * 下载裁决书
+	 */
+	@RequestMapping("/download/award/{id}")
+	public void downloadAward(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) {
+		logger.info("用户[{}]下载[{}]号案件的裁决书。", ((User)request.getSession().getAttribute("user")).getName(), id);
+
+		Case case1 = this.caseService.get(id);
+		String award = case1.getAward();
+		try {
+			response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(award, "UTF-8"));
+			FileInputStream in = new FileInputStream(dir_hearingRecord + File.separator + award);
+			int len = 0;
+			byte[] buffer = new byte[1024];
+			OutputStream out = response.getOutputStream();
+			while((len=in.read(buffer))>0){
+				out.write(buffer, 0, len);
+			}
+			in.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.warn("用户[{}]下载[{}]号案件的裁决书时出错！", ((User)request.getSession().getAttribute("user")).getName(), id, e);
 		}
 	}
 

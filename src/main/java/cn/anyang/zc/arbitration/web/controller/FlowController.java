@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -981,7 +982,7 @@ public class FlowController {
 	}
 
 	/**
-	 * 16.上传开庭笔录
+	 * 16.上传笔录+裁决书
 	 */
 	@RequestMapping(value="/16List/{uid}")
 	public String flow16List(@PathVariable Integer uid, Model model) {
@@ -999,26 +1000,43 @@ public class FlowController {
 		return "flow/16";
 	}
 
+	@Value("${dir.hearingRecord}")
+	private String dir_hearingRecord;
+
+	@Value("${dir.award}")
+	private String dir_award;
+
 	@RequestMapping(value="/16/{id}",method=RequestMethod.POST)
-	public @ResponseBody DwzAjaxModel flow16(@PathVariable String id, @RequestParam MultipartFile hearingRecord, HttpServletRequest request) {
+	public @ResponseBody DwzAjaxModel flow16(
+			@PathVariable String id, 
+			@RequestParam MultipartFile hearingRecord, 
+			@RequestParam MultipartFile award, 
+			HttpServletRequest request) {
 		try{
-			String fileName = hearingRecord.getOriginalFilename();
-			String extName = fileName.substring(fileName.lastIndexOf("."));
-			String newFileName = id + extName;
-			File file = new File(request.getServletContext().getRealPath("hearingRecord") + File.separator + newFileName);
-			hearingRecord.transferTo(file);
+			String hearingRecordFileName = hearingRecord.getOriginalFilename();
+			String hearingRecordExtName = hearingRecordFileName.substring(hearingRecordFileName.lastIndexOf("."));
+			hearingRecordFileName = id + hearingRecordExtName;
+			File hearingRecordFile = new File(dir_hearingRecord + File.separator + hearingRecordFileName);
+			hearingRecord.transferTo(hearingRecordFile);
+
+			String awardFileName = award.getOriginalFilename();
+			String awardExtName = awardFileName.substring(awardFileName.lastIndexOf("."));
+			awardFileName = id + awardExtName;
+			File awardFile = new File(dir_award + File.separator + awardFileName);
+			hearingRecord.transferTo(awardFile);
 
 			Case case1 = new Case();
 			case1.setId(id);
-			case1.setHearingRecord("hearingRecord" + File.separator + newFileName);
+			case1.setHearingRecord(hearingRecordFileName);
+			case1.setAward(awardFileName);
 			case1.setStatus(17);
 			this.caseService.update(case1);
 
-			logger.info("用户[{}]为[{}]号案件上传开庭笔录.", ((User)request.getSession().getAttribute("user")).getName(), id);
+			logger.info("用户[{}]为[{}]号案件上传笔录和裁决书.", ((User)request.getSession().getAttribute("user")).getName(), id);
 			return DwzAjaxUtils.ok_closeCurrent();
 		} catch (Exception exception){
 			exception.printStackTrace();
-			logger.error("用户[{}]在为[{}]号案件上传开庭笔录时出错！", ((User)request.getSession().getAttribute("user")).getName(), id, exception);
+			logger.error("用户[{}]在为[{}]号案件上传笔录和裁决书时出错！", ((User)request.getSession().getAttribute("user")).getName(), id, exception);
 			return DwzAjaxUtils.error();
 		}
 

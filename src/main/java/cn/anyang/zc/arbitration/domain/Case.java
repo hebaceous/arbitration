@@ -31,7 +31,8 @@ public class Case implements Serializable {
 	private String typeName;		//当为其它时自己写的类型名称
 	private User user;				//仲裁秘书
 	private Integer status = 1;		//当前案件的状态(刚添加时，默认为1)
-	private String hearingRecord;	//开庭笔录,为服务器相对位置(Folder hearingRecord---hearingRecord/xxxid.zip)
+	private String hearingRecord;	//开庭笔录
+	private String award;			//裁决书
 	private String awardResult;		//裁决书类型	{"裁决","调解","决定"}
 	private String arbitratorNames;	//仲裁员的姓名
 
@@ -190,6 +191,12 @@ public class Case implements Serializable {
 	}
 	public void setHearingRecord(String hearingRecord) {
 		this.hearingRecord = hearingRecord;
+	}
+	public String getAward() {
+		return award;
+	}
+	public void setAward(String award) {
+		this.award = award;
 	}
 	public String getAwardResult() {
 		return awardResult;

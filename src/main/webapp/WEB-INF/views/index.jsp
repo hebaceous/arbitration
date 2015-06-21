@@ -86,7 +86,7 @@ function initDWZ(){
 		callback : function() {
 			initEnv();
 			$("#themeList").theme({themeBase:"${pageContext.request.contextPath }/dwz/themes"}); // themeBase 相对于index页面的主题base路径
-			//$("#sidebar .toggleCollapse div").trigger("click");
+			// $("#sidebar .toggleCollapse div").trigger("click");
 		}
 	});
 }
@@ -95,7 +95,7 @@ function initDWZ(){
  * 初始化主页数据
  */
 var rid = ${user.role.id };
-if(rid == 4 || rid == 7 || rid == 8){ initDWZ(); }
+if(rid == 4 || rid == 7 || rid == 8 || rid == 9){ initDWZ(); }
 var count = 0;
 var parameter = { timestamp : new Date() };
 var loadCallback = function(){
@@ -522,8 +522,8 @@ function initIndexData() {
 			</div>
 		</div>
 	</c:when>
-	<%-- 仲裁秘书菜单 --%>
-	<c:when test="${user.role.id == 4 }">
+	<%-- 普通仲裁秘书(4)/立案秘书(9)菜单 --%>
+	<c:when test="${user.role.id == 4 || user.role.id == 9 }">
 		<div id="leftside">
 			<div id="sidebar_s">
 				<div class="collapse">
@@ -533,7 +533,7 @@ function initIndexData() {
 			<div id="sidebar">
 				<div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
 				<div class="accordion" fillSpace="sidebar">
-					<c:if test="${user.name == '李津'}">
+					<c:if test="${user.role.id == 9 }">
 						<div class="accordionHeader">
 							<h2><span>Folder</span>案件受理</h2>
 						</div>
@@ -579,7 +579,7 @@ function initIndexData() {
 								</ul>
 							</li>
 							<li><a href="${pageContext.request.contextPath }/case/notice3List?uid=${user.id }" target="navTab" rel="notice3List">开庭通知书</a></li>
-							<li><a href="${pageContext.request.contextPath }/flow/16List/${user.id }" target="navTab" rel="flow16List">上传开庭笔录</a></li>
+							<li><a href="${pageContext.request.contextPath }/flow/16List/${user.id }" target="navTab" rel="flow16List">上传笔录和裁决书</a></li>
 							<li><a href="javascript:;">下达裁决书</a>
 								<ul>
 									<li><a href="${pageContext.request.contextPath }/flow/17List/${user.id }" target="navTab" rel="flow17List">下达裁决书</a></li>
@@ -684,12 +684,12 @@ function initIndexData() {
 								</c:if>
 							</p>
 							<div class="divider"></div>
-							<br/><h2>上传开庭笔录：</h2><br/>
+							<br/><h2>上传笔录和裁决书：</h2><br/>
 							<p>
-								<c:if test="${count16 == 0 }"><span class="notice_none">当前没有需要上传的开庭笔录！</span></c:if>
+								<c:if test="${count16 == 0 }"><span class="notice_none">当前没有需要上传笔录和裁决书！</span></c:if>
 								<c:if test="${count16 > 0 }">
-									当前有<span class="notice_number">${count16 }</span>条待上传的开庭笔录，
-									<a href="${pageContext.request.contextPath }/flow/16List/${user.id }" title="上传开庭笔录" target="navTab" rel="flow16List" style="color: red;text-decoration: underline;">点击这里查看...</a>
+									当前有<span class="notice_number">${count16 }</span>条待上传的笔录和裁决书，
+									<a href="${pageContext.request.contextPath }/flow/16List/${user.id }" title="上传笔录和裁决书" target="navTab" rel="flow16List" style="color: red;text-decoration: underline;">点击这里查看...</a>
 								</c:if>
 							</p>
 							<div class="divider"></div>
@@ -778,7 +778,7 @@ function initIndexData() {
 								</ul>
 							</li>
 							<li><a href="${pageContext.request.contextPath }/case/notice3List?uid=${user.id }" target="navTab" rel="notice3List">开庭通知书</a></li>
-							<li><a href="${pageContext.request.contextPath }/flow/16List/${user.id }" target="navTab" rel="flow16List">上传开庭笔录</a></li>
+							<li><a href="${pageContext.request.contextPath }/flow/16List/${user.id }" target="navTab" rel="flow16List">上传笔录和裁决书</a></li>
 							<li><a href="javascript:;">下达裁决书</a>
 								<ul>
 									<li><a href="${pageContext.request.contextPath }/flow/17List/${user.id }" target="navTab" rel="flow17List">下达裁决书</a></li>
@@ -892,12 +892,12 @@ function initIndexData() {
 								</c:if>
 							</p>
 							<div class="divider"></div>
-							<br/><h2>上传开庭笔录：</h2><br/>
+							<br/><h2>上传笔录和裁决书：</h2><br/>
 							<p>
-								<c:if test="${count16 == 0 }"><span class="notice_none">当前没有需要上传的开庭笔录！</span></c:if>
+								<c:if test="${count16 == 0 }"><span class="notice_none">当前没有需要上传的笔录和裁决书！</span></c:if>
 								<c:if test="${count16 > 0 }">
-									当前有<span class="notice_number">${count16 }</span>条待上传的开庭笔录，
-									<a href="${pageContext.request.contextPath }/flow/16List/${user.id }" title="上传开庭笔录" target="navTab" rel="flow16List" style="color: red;text-decoration: underline;">点击这里查看...</a>
+									当前有<span class="notice_number">${count16 }</span>条待上传的笔录和裁决书，
+									<a href="${pageContext.request.contextPath }/flow/16List/${user.id }" title="上传笔录和裁决书" target="navTab" rel="flow16List" style="color: red;text-decoration: underline;">点击这里查看...</a>
 								</c:if>
 							</p>
 							<div class="divider"></div>

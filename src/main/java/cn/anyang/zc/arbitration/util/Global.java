@@ -15,7 +15,7 @@ public class Global {
 	public static String message123 = "已阅，符合仲裁法第二十一条规定，拟同意立案。";
 
 	// 送达方式	
-	public static String[] serviceModes = {"直接送达", "公正送达", "邮寄", "公告", "留置"};
+	public static String[] serviceModes = {"直接送达", "公证送达", "邮寄", "公告", "留置"};
 
 	// 裁决书的三种方式(裁决、调解、决定)
 	public static String[] awardTypes = {"裁决", "调解", "决定"};

@@ -28,6 +28,7 @@
 		<result property="typeName" column="typeName"/>
 		<result property="status" column="status"/>
 		<result property="hearingRecord" column="hearingRecord"/>
+		<result property="award" column="award"/>
 		<result property="awardResult" column="awardResult"/>
 		<association property="user" javaType="User" columnPrefix="u_">
 			<id property="id" column="id" />
@@ -38,7 +39,7 @@
 		</association>
 	</resultMap>
 
-	<sql id="cases">c.id c_id,c.cause,c.agreement,c.request,c.caseOfficer,c.responsiblePersonOpinion,c.departmentOpinion,c.secretaryGeneralOpinion,c.money,c.acceptCharges,c.handlingCharges,c.arbitrationCharges,c.paidCharges,c.debtCharges,c.isRelief,c.date,c.registerDate,c.formationDate,c.courtDate,c.concludedDate,c.applicableProcedure,c.type,c.typeName,c.uid,c.status,c.hearingRecord</sql>
+	<sql id="cases">c.id c_id,c.cause,c.agreement,c.request,c.caseOfficer,c.responsiblePersonOpinion,c.departmentOpinion,c.secretaryGeneralOpinion,c.money,c.acceptCharges,c.handlingCharges,c.arbitrationCharges,c.paidCharges,c.debtCharges,c.isRelief,c.date,c.registerDate,c.formationDate,c.courtDate,c.concludedDate,c.applicableProcedure,c.type,c.typeName,c.uid,c.status,c.hearingRecord,c.award</sql>
 	<sql id="users">u.id u_id,u.name u_name,u.username u_username,u.password u_password,u.description u_description</sql>
 
 	<sql id="all">
@@ -100,7 +101,8 @@
 				<if test="user.id != null">uid = #{user.id},</if>
 			</if>
 			<if test="status != null">status = #{status},</if>
-			<if test="hearingRecord != null">hearingRecord = #{hearingRecord}</if>
+			<if test="hearingRecord != null">hearingRecord = #{hearingRecord},</if>
+			<if test="award != null">award = #{award}</if>
 		</set>
 		where id = #{id}
 	</update>

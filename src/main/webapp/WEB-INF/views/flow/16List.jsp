@@ -52,7 +52,7 @@
 					</c:forEach>
 				</td>
 				<td>
-					<a title="上传开庭笔录" target="dialog" mask="true" href="${pageContext.request.contextPath }/flow/16/${c.id }">上传开庭笔录</a>
+					<a title="上传笔录和裁决书" target="dialog" mask="true" href="${pageContext.request.contextPath }/flow/16/${c.id }">上传笔录和裁决书</a>
 				</td>
 			</tr>
 			</c:forEach>

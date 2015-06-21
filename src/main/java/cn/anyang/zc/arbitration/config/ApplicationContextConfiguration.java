@@ -21,7 +21,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 @MapperScan(basePackages={"cn.anyang.zc.arbitration.mapper"})
 @Configuration
 @EnableTransactionManagement
-@PropertySource("classpath:jdbc.properties")
+@PropertySource("classpath:config.properties")
 @ComponentScan(basePackages={"cn.anyang.zc.arbitration.service.impl"})
 public class ApplicationContextConfiguration implements TransactionManagementConfigurer {
 

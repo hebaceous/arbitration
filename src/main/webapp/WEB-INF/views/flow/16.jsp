@@ -4,8 +4,12 @@
 	<form action="${pageContext.request.contextPath }/flow/16/${c.id }" method="post" enctype="multipart/form-data" class="pageForm required-validate" onsubmit="return iframeCallback(this,dialogAjaxDone);">
 		<div class="pageFormContent" layoutH="70">
 			<p>
-				<label>请选择文件：</label>
-				<input name="hearingRecord" type="file" />
+				<label>开庭笔录：</label>
+				<input name="hearingRecord" type="file"  class="required"/>
+			</p>
+			<p>
+				<label>裁决书：</label>
+				<input name="award" type="file" class="required"/>
 			</p>
 		</div>
 		<div class="formBar">

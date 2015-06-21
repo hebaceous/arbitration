@@ -26,13 +26,14 @@
 				<th>适用程序</th>
 				<th>仲裁秘书</th>
 				<th>开庭笔录</th>
+				<th>裁决书</th>
 				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:if test="${empty cases }">
 				<tr>
-					<td colspan="15" style="text-align: center;color: red;">没有相关数据！</td>
+					<td colspan="16" style="text-align: center;color: red;">没有相关数据！</td>
 				</tr>
 			</c:if>
 			<c:forEach var="c" items="${cases }">
@@ -54,7 +55,8 @@
 					</c:forEach>
 				</td>
 				<th>${c.user.name }</th>
-				<td><a href="${pageContext.request.contextPath }/case/download/${c.id }">点击下载</a></td>
+				<td><a href="${pageContext.request.contextPath }/case/download/hearingRecord/${c.id }">点击下载</a></td>
+				<td><a href="${pageContext.request.contextPath }/case/download/award/${c.id }">点击下载</a></td>
 				<td>
 					<a title="裁决书审批" target="dialog" mask="true" max="true" href="${pageContext.request.contextPath }/flow/181920/${c.id }">审批裁决书</a>
 				</td>

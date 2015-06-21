@@ -25,7 +25,7 @@
 		<tbody>
 			<c:if test="${empty receipts }">
 				<tr>
-					<td colspan="7" style="text-align: center;color: red;">没有相关数据！</td>
+					<td colspan="8" style="text-align: center;color: red;">没有相关数据！</td>
 				</tr>
 			</c:if>
 			<c:forEach var="receipt" items="${receipts }">
